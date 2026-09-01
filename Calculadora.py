@@ -1,4 +1,4 @@
-opcao = 1
+opcao = None
 
 while opcao != 0:
 
@@ -12,29 +12,31 @@ while opcao != 0:
 
         opcao = int(input("\nEscolha uma opção:"))
 
-        if opcao == 1:
+        if 1 <= opcao <= 4:
                 
-                num1 = int(input("\nColoque o primeiro número:"))
-                num2 = int(input("\nColoque o segundo número:"))
-                print(f"\nO resultado é: {num1 + num2}\n")
+                num1 = float(input("Digite o primeiro número: "))
+                num2 = float(input("Digite o segundo número: "))
+
+        if opcao == 1:
+                resultado = num1 + num2
+                print(f"O resultado da soma é: {resultado}")
+
 
         elif opcao == 2:
-                
-                num1 = int(input("\nColoque o primeiro número:"))
-                num2 = int(input("\nColoque o segundo número:"))
-                print(f"\nO resultado é: {num1 - num2}\n")
+                resultado = num1 - num2
+                print(f"O resultado da subtração é: {resultado}")
+
 
         elif opcao == 3:
-                
-            num1 = int(input("\nColoque o primeiro número:"))
-            num2 = int(input("\nColoque o segundo número:"))
-            print(f"\nO resultado é: {num1 * num2}\n")
+                resultado = num1 * num2
+                print(f"O resultado da multiplicação é: {resultado}")
+
 
         elif opcao == 4:
-                
-                num1 = int(input("\nColoque o primeiro número:"))
-                num2 = int(input("\nColoque o segundo número:"))
-                print(f"\nO resultado é: {num1 / num2}\n")
+                if num2 != 0:
+                    resultado = num1 / num2
+                    print(f"O resultado da divisão é: {resultado}")
 
-        elif opcao not in (0, 1, 2, 3, 4): 
-                print("\nOpção inválida!\n")
+
+                else:
+                    print("Erro: Divisão por zero não é permitida.")
