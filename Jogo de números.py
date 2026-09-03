@@ -39,3 +39,5 @@ if numero_escolhido == numero_sorteado:
     tentativas += 1
     print("Parabéns! Você acertou o número sorteado:", numero_sorteado)
     print("Número de tentativas:", tentativas)
+
+#Jogo completo!
