@@ -16,7 +16,9 @@ while True:
         tipo_ganho = input("Qual a origem do ganho? :")
         while True:
             try:
-                ganhos[tipo_ganho] = int(input("Valor do ganho? :"))
+                ganhos[tipo_ganho] = float(input("Valor do ganho? :"))
+                if tipo_ganho not in ganhos:
+                    ganhos[tipo_ganho] = []
                 print("Ganho armazenado com sucesso!")
                 saldo += ganhos[tipo_ganho]
                 print(saldo)
@@ -28,10 +30,11 @@ while True:
         tipo_despesa = input("Qual origem da despesa? :")
         while True:
             try:   
-                despesas[tipo_despesa] = int(input("Valor da despesa:"))
+                despesas[tipo_despesa] = float(input("Valor da despesa:"))
                 print("Despesa armazenada com sucesso!")
                 saldo -= despesas[tipo_despesa]
                 print(saldo)
+                break
             except ValueError:
                 print("Insira um valor válido!")
 
