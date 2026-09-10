@@ -1,8 +1,7 @@
 print("Gerenciador de Finanças Pessoais")
 
 saldo = 0
-despesas = {}
-ganhos = {}
+historico = []
 
 while True:
     print("1. Cadastar Ganhos")
@@ -13,30 +12,49 @@ while True:
     
 
     if escolha == 1:
+        
         tipo_ganho = input("Qual a origem do ganho? :")
+
         while True:
+
             try:
-                ganhos[tipo_ganho] = float(input("Valor do ganho? :"))
-                if tipo_ganho not in ganhos:
-                    ganhos[tipo_ganho] = []
+                valor = float(input("Valor do ganho? :"))
+                transacao = {"Tipo": "Ganho", "Origem": tipo_ganho, "Valor": valor}
+                historico.append(transacao)
                 print("Ganho armazenado com sucesso!")
-                saldo += ganhos[tipo_ganho]
-                print(saldo)
+                saldo += transacao["Valor"]
+                print(f"Seu saldo é: {saldo}!")
                 break
+            
             except ValueError:
                 print("Insira um valor válido!")
 
     elif escolha == 2:
         tipo_despesa = input("Qual origem da despesa? :")
+
         while True:
+            
             try:   
-                despesas[tipo_despesa] = float(input("Valor da despesa:"))
+                valor = float(input("Valor da despesa:"))
+                transacao = {"Tipo": "Despesa", "Origem": tipo_despesa, "Valor": valor}
+                historico.append(transacao)
                 print("Despesa armazenada com sucesso!")
-                saldo -= despesas[tipo_despesa]
-                print(saldo)
+                saldo -= transacao["Valor"]
+                print(f"Seu saldo é: {saldo}!")
                 break
+            
             except ValueError:
                 print("Insira um valor válido!")
+
+    elif escolha == 3:
+
+        for transacao in historico:
+            tipo = transacao["Tipo"]
+            origem = transacao["Origem"]
+            valor = transacao["Valor"]
+
+            if tipo == "Ganho":
+                print(f" [+] R${valor} {origem}")
 
     elif escolha == 4:
         print("Fechando...")
